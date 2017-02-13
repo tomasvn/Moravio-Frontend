@@ -1,0 +1,207 @@
+//Global
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  font-family: Quicksand, serif, sans-serif;
+}
+
+img {
+  max-width: 100%;
+}
+
+//Colors
+$twitter-blue: #33ccff;
+$twitter-blue-light: #5cd6ff;
+$facebook-blue: #3a589e;
+$facebook-blue-light: #5771ac;
+$violet: #352f4c;
+$violet-light: #4a445e;
+$violet-dark: #2a2442;
+$light-green: #32c9c0;
+
+//Mixin
+@mixin default-btn {
+  width: 100%;
+  height: 55px;
+  margin-bottom: 15px;
+  font-family: Quicksand, serif, sans-serif;
+  color: #fff;
+  cursor: pointer;
+  position: relative;
+  font-size: 18px;
+  font-weight: $font-weight__regular;
+  padding: 15px;
+  outline: none;
+  border: none;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+@mixin icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 56px;
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+//Font Weights
+$font-weight__regular: 400;
+$font-weight__medium: 500;
+$font-weight__bold: 700;
+
+//App Styling
+.login {
+    text-align: center;
+    position: relative;
+    //background: red;
+    background: url(../images/chef.jpg) 0 0;
+    background-size: cover;
+    height: 100vh;
+    overflow-y: hidden;
+    @media screen and (max-width: 767px) {
+      background-position: center center;
+    }
+    .color-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgb(42, 36, 66));
+      height: 100%;
+      width: 100%;
+      z-index: 0;
+    }
+
+  &__panel {
+    display: flex;
+    justify-content: space-between;
+    //background: yellow;
+    color: #fff;
+    font-weight: $font-weight__medium;
+    &--signal-bar {
+      &::before {
+        content: "";
+        background: url(../images/icons/signal.svg) no-repeat center;
+        width: 25px;
+        height: 13px;
+        display: inline-block;
+        margin: 0 4px;
+        vertical-align: middle;
+      }
+      &::after {
+        content: "";
+        background: url(../images/icons/wifi.svg) no-repeat center;
+        width: 25px;
+        height: 13px;
+        display: inline-block;
+        margin-left: 5px;
+      }
+    }
+    &--status-bar {
+      &::before {
+        content: "";
+        background: url(../images/icons/bluetooth.svg) no-repeat center;
+        width: 25px;
+        height: 13px;
+        display: inline-block;
+      }
+      &::after {
+        content: "";
+        background: url(../images/icons/battery.svg) no-repeat center;
+        width: 25px;
+        height: 13px;
+        display: inline-block;
+        margin: 0 4px;
+      }
+    }
+  }
+}
+
+.img-wrapper {
+  position: absolute;
+  top: 75px;
+  left: 0;
+  width: 100%;
+  animation: moveDown 1500ms ease-in 600ms 1;
+}
+
+.btn-wrapper {
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  width: 100%;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  padding: 0 15px;
+  .title {
+    color: #fff;
+    font-weight: $font-weight__regular;
+  }
+}
+
+.btn {
+  @include default-btn;
+
+  &.btn-twitter {
+    background: $twitter-blue;
+  }
+
+  &.btn-facebook {
+    background: $facebook-blue;
+  }
+
+  &.btn-email {
+    background: $violet;
+  }
+
+  &.btn-more {
+    background: none;
+    border: 1px solid $light-green;
+    color: $light-green;
+    transition: 400ms ease-in;
+    background: $violet-dark;
+    &::before {
+      content: "\f0f5";
+      font-family: "FontAwesome";
+      padding-right: 5px;
+    }
+    &:hover {
+      border-color: #fff;
+      color: #fff;
+    }
+  }
+  .icon {
+    @include icon;
+    &.icon-twitter {
+      background: $twitter-blue-light;
+    }
+    &.icon-facebook {
+      background: $facebook-blue-light;
+    }
+    &.icon-email {
+      background: $violet-dark;
+    }
+  }
+}
+
+//Animation Experiment
+@keyframes moveDown {
+  from {
+    transform: translate(0,-400px);
+  }
+  to {
+    transform: translate(0,0);
+  }
+}
