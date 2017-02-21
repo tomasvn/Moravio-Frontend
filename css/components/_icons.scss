@@ -1,0 +1,21 @@
+//Icons
+.icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 56px;
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &.icon-twitter {
+    background: $twitter-blue-light;
+  }
+  &.icon-facebook {
+    background: $facebook-blue-light;
+  }
+  &.icon-email {
+    background: $violet-dark;
+  }
+}
